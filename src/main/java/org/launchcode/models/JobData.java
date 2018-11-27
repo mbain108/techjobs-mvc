@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * Created by LaunchCode
  */
+
 public class JobData {
 
     private static final String DATA_FILE = "job_data.csv";
@@ -37,9 +38,11 @@ public class JobData {
         ArrayList<String> values = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
+
             String aValue = row.get(field);
 
             if (!values.contains(aValue)) {
+
                 values.add(aValue);
             }
         }
@@ -82,6 +85,7 @@ public class JobData {
             String aValue = row.get(column);
 
             if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
+
                 jobs.add(row);
             }
         }
@@ -105,9 +109,11 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             for (String key : row.keySet()) {
+
                 String aValue = row.get(key);
 
                 if (aValue.toLowerCase().contains(value.toLowerCase())) {
+
                     jobs.add(row);
 
                     // Finding one field in a job that matches is sufficient
@@ -126,6 +132,7 @@ public class JobData {
 
         // Only load data once
         if (isDataLoaded) {
+
             return;
         }
 
@@ -144,9 +151,11 @@ public class JobData {
 
             // Put the records into a more friendly format
             for (CSVRecord record : records) {
+
                 HashMap<String, String> newJob = new HashMap<>();
 
                 for (String headerLabel : headers) {
+
                     newJob.put(headerLabel, record.get(headerLabel));
                 }
 
@@ -157,9 +166,9 @@ public class JobData {
             isDataLoaded = true;
 
         } catch (IOException e) {
+
             System.out.println("Failed to load job data");
             e.printStackTrace();
         }
     }
-
 }
